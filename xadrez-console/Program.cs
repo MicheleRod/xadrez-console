@@ -8,6 +8,11 @@ internal class Program
     {
         try
         {
+            PosicaoXadrez pos = new PosicaoXadrez('c', 7);
+            Console.WriteLine(pos);
+
+            Console.WriteLine(pos.toPosicao());
+
             Tabuleiro tab = new Tabuleiro(8, 8); // instaciou tabuleiro vazio
 
             tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));

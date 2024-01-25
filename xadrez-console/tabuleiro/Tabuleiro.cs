@@ -54,7 +54,7 @@ namespace tabuleiro
         {
             if (!posicaoValida(pos)) // ! = não
             {
-                throw new TabuleiroException("Posição inválida");
+                throw new TabuleiroException("Posição inválida.");
             }
         }
     }
