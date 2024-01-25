@@ -15,9 +15,15 @@ namespace tabuleiro
             pecas = new Peca[linhas, colunas];
         }
 
-        public Peca peca(int linha, int coluna)
+        public Peca peca(int linha, int coluna) // método p retornar uma peça, já que a matriz não pode ser acessada.
         {
-            return pecas[linha, coluna];
+            return pecas[linha, coluna]; // esse método vai acessar a peça na linha linha e coluna coluna.
+        }
+
+        public void colocarPeca(Peca p, Posicao pos)
+        {
+            pecas[pos.linha, pos.coluna] = p; //jogando a peça p na matriz de pecas nessa posição
+            p.posicao = pos;
         }
     }
 }
