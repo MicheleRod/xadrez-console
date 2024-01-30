@@ -18,12 +18,21 @@ internal class Program
                 Console.Clear();
                 Tela.imprimirTabuleiro(partida.tab); // chamando método p imprimir
 
+                Console.WriteLine();
                 Console.Write("Origem: ");
                 Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossíveis(); //analisa os movimentos possíveis e guardar na matriz de posições possíveis
+
+                Console.Clear();
+                Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
+
+                Console.WriteLine();
+
                 Console.Write("Destino: ");
                 Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                partida.executaMovimento(origem, destino);
+                partida.executaMovimento(origem, destino); 
             }
 
             
