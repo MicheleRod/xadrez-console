@@ -7,6 +7,7 @@ namespace xadrez
     {
         public Peao(Tabuleiro tab, Cor cor) : base(tab, cor)
         {
+           
         }
 
         public override string ToString()
@@ -34,51 +35,39 @@ namespace xadrez
 
             if (cor == Cor.Branca)
             {
-                pos.definirValores(posicao.linha - 1, posicao.coluna); //pode andar p cima se a casa estiver livre
+                pos.definirValores(posicao.linha - 1, posicao.coluna);
+
                 if (tab.posicaoValida(pos) && livre(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
-                }
-                pos.definirValores(posicao.linha - 2, posicao.coluna); //pode andar 2 casas acima se estiver livre e se for o 1ºmovimento do peao
-                if (tab.posicaoValida(pos) && livre(pos) && qtdeMovimentos == 0)
-                {
-                    mat[pos.linha, pos.coluna] = true;
-                }
-                pos.definirValores(posicao.linha - 1, posicao.coluna - 1); //pode andar nas diagonais se existir inimigo na diagonal
-                if (tab.posicaoValida(pos) && existeInimigo(pos))
-                {
-                    mat[pos.linha, pos.coluna] = true;
-                }
-                pos.definirValores(posicao.linha - 1, posicao.coluna + 1); //pode andar nas diagonais se existir inimigo na diagonal
-                if (tab.posicaoValida(pos) && existeInimigo(pos))
-                {
-                    mat[pos.linha, pos.coluna] = true;
+
+                    pos.definirValores(posicao.linha - 2, posicao.coluna);
+
+                    if (tab.posicaoValida(pos) && livre(pos) && qtdeMovimentos == 0)
+                    {
+                        mat[pos.linha, pos.coluna] = true;
+                    }
                 }
             }
-            else {
-                pos.definirValores(posicao.linha + 1, posicao.coluna); //pode andar p cima se a casa estiver livre
+
+
+            else
+            {
+                pos.definirValores(posicao.linha + 1, posicao.coluna);
+
                 if (tab.posicaoValida(pos) && livre(pos))
                 {
                     mat[pos.linha, pos.coluna] = true;
+
+                    pos.definirValores(posicao.linha + 2, posicao.coluna);
+                    if (tab.posicaoValida(pos) && livre(pos) && qtdeMovimentos == 0)
+                    {
+                        mat[pos.linha, pos.coluna] = true;
+                    }
                 }
-                pos.definirValores(posicao.linha + 2, posicao.coluna); //pode andar 2 casas acima se estiver livre e se for o 1ºmovimento do peao
-                if (tab.posicaoValida(pos) && livre(pos) && qtdeMovimentos == 0)
-                {
-                    mat[pos.linha, pos.coluna] = true;
-                }
-                pos.definirValores(posicao.linha + 1, posicao.coluna - 1); //pode andar nas diagonais se existir inimigo na diagonal
-                if (tab.posicaoValida(pos) && existeInimigo(pos))
-                {
-                    mat[pos.linha, pos.coluna] = true;
-                }
-                pos.definirValores(posicao.linha + 1, posicao.coluna + 1); //pode andar nas diagonais se existir inimigo na diagonal
-                if (tab.posicaoValida(pos) && existeInimigo(pos))
-                {
-                    mat[pos.linha, pos.coluna] = true;
-                }
-            }
+            } 
             return mat;
-        }
+            }
         
     }
 }
