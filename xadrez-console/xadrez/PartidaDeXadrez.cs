@@ -69,7 +69,8 @@ namespace xadrez
                     {
                         posP = new Posicao(destino.linha + 1, destino.coluna); //peça capturada está uma casa abaixo, +1 é p subir a peça branca
                     }
-                    else { posP = new Posicao(origem.coluna - 1, destino.coluna);  } 
+                    else { posP = new Posicao(destino.linha - 1, destino.coluna);  
+                    } 
                     pecaCapturada = tab.retirarPeca(posP);
                     capturadas.Add(pecaCapturada);
                 }
@@ -244,6 +245,18 @@ namespace xadrez
             return aux;
         }
 
+        private Cor adversaria(Cor cor)
+        {
+            if (cor == Cor.Branca)
+            {
+                return Cor.Preta;
+            }
+            else
+            {
+                return Cor.Branca;
+            }
+        }
+
         private Peca rei(Cor cor)
         {
             foreach (Peca x in pecasEmJogo(cor)) { 
@@ -271,17 +284,7 @@ namespace xadrez
             return false;
         }
 
-        private Cor adversaria(Cor cor)
-        {
-            if (cor == Cor.Branca)
-            {
-                return Cor.Preta;
-            }
-            else
-            {
-                return Cor.Branca;
-            }
-        }
+        
 
         public bool testeXequeMate(Cor cor)
         {
